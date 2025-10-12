@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Web App</title>
+    <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <nav class="bg-blue-600 text-white shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <h1 class="text-xl font-bold">
+                    <a href="/" class="hover:text-blue-200">Simple Web App</a>
+                </h1>
+                <div class="space-x-4">
+                    <% if (user) { %>
+                        <span class="text-blue-200">Hello, <%= user.username %>!</span>
+                        <a href="/dashboard" class="hover:text-blue-200">Dashboard</a>
+                        <form method="POST" action="/logout" class="inline">
+                            <button type="submit" class="hover:text-blue-200 bg-transparent border-none cursor-pointer">Logout</button>
+                        </form>
+                    <% } else { %>
+                        <a href="/login" class="hover:text-blue-200">Login</a>
+                        <a href="/register" class="hover:text-blue-200">Register</a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="text-center">
+            <h1 class="text-4xl font-bold text-gray-800 mb-6">Welcome to Simple Web App</h1>
+            <p class="text-xl text-gray-600 mb-8">A full-stack Node.js application with Express backend and Tailwind CSS frontend</p>
+            
+            <div class="grid md:grid-cols-3 gap-8 mt-12">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">🚀 Node.js & Express</h3>
+                    <p class="text-gray-600">Powerful backend with Express.js server and SQLite database</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">🎨 Tailwind CSS</h3>
+                    <p class="text-gray-600">Beautiful, responsive design with utility-first CSS framework</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">🔐 Authentication</h3>
+                    <p class="text-gray-600">Secure user authentication with sessions and password hashing</p>
+                </div>
+            </div>
+
+            <% if (!user) { %>
+                <div class="mt-12">
+                    <a href="/register" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg mr-4">
+                        Get Started
+                    </a>
+                    <a href="/login" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-lg">
+                        Login
+                    </a>
+                </div>
+            <% } else { %>
+                <div class="mt-12">
+                    <a href="/dashboard" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg">
+                        Go to Dashboard
+                    </a>
+                </div>
+            <% } %>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-4 py-6 text-center">
+            <p>&copy; 2025 Simple Web App. Built with Node.js, Express, and Tailwind CSS.</p>
+        </div>
+    </footer>
+</body>
+</html>
